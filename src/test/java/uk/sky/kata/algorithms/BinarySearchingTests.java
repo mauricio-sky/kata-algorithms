@@ -19,7 +19,7 @@ class BinarySearchingTests {
     }
 
     @Test
-    void shouldReturnThePositionWhenTheValueIsFound() {
+    void shouldReturnThePositionWhenTheValueIsFoundOneTheRightSide() {
         // Arrange
         var input = new int[]{2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
         var target = 23;
@@ -33,11 +33,39 @@ class BinarySearchingTests {
     }
 
     @Test
-    void wheTheArrayIsNotSortedShouldSortAndReturnThePositionWhenTheValueIsFound() {
+    void shouldReturnThePositionWhenTheValueIsFoundOnTheLeftSide() {
         // Arrange
-        var input = new int[]{12, 16, 56, 23, 72, 91, 38, 2, 8, 5};
-        var target = 23;
-        var expectedPosition = 5;
+        var input = new int[]{2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+        var target = 12;
+        var expectedPosition = 3;
+
+        // Act
+        int result = new BinarySearching().search(input, target);
+
+        // Assert
+        Assertions.assertEquals(expectedPosition, result);
+    }
+
+    @Test
+    void shouldReturnThePositionWhenTheValueIsFoundInFirstPosition() {
+        // Arrange
+        var input = new int[]{2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+        var target = 2;
+        var expectedPosition = 0;
+
+        // Act
+        int result = new BinarySearching().search(input, target);
+
+        // Assert
+        Assertions.assertEquals(expectedPosition, result);
+    }
+
+    @Test
+    void shouldReturnThePositionWhenTheValueIsFoundInLastPosition() {
+        // Arrange
+        var input = new int[]{2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+        var target = 91;
+        var expectedPosition = 9;
 
         // Act
         int result = new BinarySearching().search(input, target);
